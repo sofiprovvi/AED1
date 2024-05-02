@@ -219,7 +219,7 @@ cantidadChar1 :: [Char] -> Integer
 cantidadChar1 (x:y:xs) = cantidadChar (primeraPalabra (x:y:xs))
 
 cantidadChar2 :: [Char] -> Integer
-cantidadChar2 (x:y:xs) = cantidadChar (segundaPalabra (x:xs))
+cantidadChar2 (x:y:xs) = cantidadChar (segundaPalabra (x:y:xs))
 
 segundaPalabra :: [Char] -> [Char]
 segundaPalabra (x:xs) = sacarExtremosYRepetidos (primeraPalabra (quitarPrimeraPalabra (x:xs)))
