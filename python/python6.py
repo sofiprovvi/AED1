@@ -99,3 +99,60 @@ def sirve_pino2 (metros: float) -> bool:
     return (peso_pino (metros)>=400) and (peso_pino (metros)<=1000)
 
 
+#EJERCICIO 5:
+
+#5.1)
+def devolver_el_doble_si_es_par (numero: int) -> int:
+    if es_par (numero): devolver_el_doble_si_es_par =2*numero
+    else: devolver_el_doble_si_es_par =numero
+    return devolver_el_doble_si_es_par
+
+#5.2)
+def devolver_valor_si_es_par_sino_el_que_sigue1 (numero: int) -> int:
+     if es_par (numero): devolver_valor_si_es_par_sino_el_que_sigue1 =numero 
+     else: devolver_valor_si_es_par_sino_el_que_sigue1 =numero + 1 
+     return devolver_valor_si_es_par_sino_el_que_sigue1
+
+def devolver_valor_si_es_par_sino_el_que_sigue2 (numero: int) -> int:
+     if es_par (numero): devolver_valor_si_es_par_sino_el_que_sigue2 =numero 
+     if not(es_par (numero)): devolver_valor_si_es_par_sino_el_que_sigue2 = numero + 1 
+     return devolver_valor_si_es_par_sino_el_que_sigue2     
+
+#5.3)
+def devolver_el_doble_si_es_multiplo3_el_triple_si_es_multiplo91 (numero: int) -> int:
+    if es_multiplo_de (numero,9): devolver_el_doble_si_es_multiplo3_el_triple_si_es_multiplo91 =3*numero
+    elif es_multiplo_de (numero,3): devolver_el_doble_si_es_multiplo3_el_triple_si_es_multiplo91 =2*numero
+    else: devolver_el_doble_si_es_multiplo3_el_triple_si_es_multiplo91 =numero
+    return devolver_el_doble_si_es_multiplo3_el_triple_si_es_multiplo91
+
+def devolver_el_doble_si_es_multiplo3_el_triple_si_es_multiplo92 (numero: int) -> int:
+    if es_multiplo_de (numero,9): devolver_el_doble_si_es_multiplo3_el_triple_si_es_multiplo92 =3*numero    
+    elif es_multiplo_de (numero,3): devolver_el_doble_si_es_multiplo3_el_triple_si_es_multiplo92 =2*numero
+    if not (es_multiplo_de (numero,3)) and not (es_multiplo_de (numero,9)): devolver_el_doble_si_es_multiplo3_el_triple_si_es_multiplo92 = numero
+    return devolver_el_doble_si_es_multiplo3_el_triple_si_es_multiplo92
+
+def devolver_el_doble_si_es_multiplo3_el_triple_si_es_multiplo93 (numero: int) -> int:
+    return (es_multiplo_de (numero,9) and (3*numero)) or (es_multiplo_de (numero,3) and (2*numero)) or (numero)
+
+#5.4)
+def lindo_nombre (nombre:str) -> str:
+    if (len(nombre))>=5: lindo_nombre = "Tu nombre tiene muchas letras!"
+    else: lindo_nombre = "Tu nombre tiene menos de 5 caracteres"
+    return lindo_nombre
+
+#5.5)
+def elRango (numero: int) -> str:
+    if numero<5: elRango ="Menor a 5"
+    elif (numero>10) and (numero<=20): elRango ="Entre 10 y 20"
+    elif(numero>20): elRango ="Mayor a 20"
+    else: elRango = "No pertenece a elRango"
+    return elRango
+
+#5.6)
+def destinoSexo (sexo: str, edad: int) -> str:
+    if sexo=="F" and edad>=60: destinoSexo = "Andá de vacaciones"
+    elif sexo=="F" and edad<60 and edad>=18: destinoSexo = "Te toca trabajar"
+    elif sexo=="M" and edad>=65: destinoSexo = "Andá de vacaciones"
+    elif sexo=="M" and edad<65 and edad>=18: destinoSexo = "Te toca trabajar"
+    else: destinoSexo = "Andá de vacaciones"
+    return destinoSexo
