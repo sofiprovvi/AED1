@@ -156,3 +156,36 @@ def destinoSexo (sexo: str, edad: int) -> str:
     elif sexo=="M" and edad<65 and edad>=18: destinoSexo = "Te toca trabajar"
     else: destinoSexo = "Andá de vacaciones"
     return destinoSexo
+
+
+
+#EJERCICIO 6:
+
+#6.1)
+def numeros1a10 ():
+    numero: int = 1
+    while numero<=10:
+        print (numero)
+        numero += 1
+
+#6.2)
+def numeros10a40 ():
+    numero: int = 1
+    while numero <= 40:
+        if es_par (numero) : 
+            print (numero)
+        numero += 1
+
+#6.3)
+def imprime_eco ():
+    palabra = "eco"
+    while len(palabra)<=30:
+        print(palabra)
+    palabra *= 1    
+
+
+#6.4)
+def despegue (numero: int) -> int:
+    while numero >=1:
+        print(numero)
+        numero -= 1    
