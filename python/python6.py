@@ -179,9 +179,10 @@ def numeros10a40 ():
 #6.3)
 def imprime_eco ():
     palabra = "eco"
-    while len(palabra)<=30:
-        print(palabra)
-    palabra *= 1    
+    n = 1
+    while n<=10:
+        print(palabra*n)
+        n += 1    
 
 
 #6.4)
@@ -189,3 +190,16 @@ def despegue (numero: int) -> int:
     while numero >=1:
         print(numero)
         numero -= 1    
+
+
+#6.5)
+def viaje_tiempo (partida: int, llegada: int) -> int:
+    while partida>=llegada:
+        if (partida - 1) > llegada:
+            print("Viajó un año al pasado, estamos en el año:")
+            print(partida - 1)
+        elif (partida - 1) == llegada:
+            print("Viajó un año al pasado, estamos en el año:")
+            print (llegada)    
+        partida -= 1
+        
