@@ -193,7 +193,7 @@ def despegue (numero: int) -> int:
 
 
 #6.5)
-def viaje_tiempo (partida: int, llegada: int) -> int:
+def viaje_tiempo (partida: int, llegada: int) -> None:
     while partida>=llegada:
         if (partida - 1) > llegada:
             print("Viajó un año al pasado, estamos en el año: " + str (partida - 1))
@@ -201,3 +201,12 @@ def viaje_tiempo (partida: int, llegada: int) -> int:
             print("Viajó un año al pasado, estamos en el año: " + str (llegada))   
         partida -= 1
         
+#6.6)
+def viaje_aristoteles (partida: int) -> None:
+    while partida>=(-384):
+          if (partida - 20) > (-384):
+            print("Viajó un año al pasado, estamos en el año: " + str (partida - 20))
+          elif (partida - 20) == 384:
+            print("Viajó un año al pasado, estamos en el año: " + str (384))   
+          partida -= 20
+               
