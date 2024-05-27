@@ -179,10 +179,10 @@ def numeros10a40 ():
 #6.3)
 def imprime_eco ():
     palabra = "eco"
-    n = 1
+    n: int = 1
     while n<=10:
-        print(palabra*n)
-        n += 1    
+        print(palabra)
+        n += 1 
 
 
 #6.4)
@@ -210,3 +210,4 @@ def viaje_aristoteles (partida: int) -> None:
             print("Viajó un año al pasado, estamos en el año: " + str (384))   
           partida -= 20
                
+
