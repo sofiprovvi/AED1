@@ -196,10 +196,8 @@ def despegue (numero: int) -> int:
 def viaje_tiempo (partida: int, llegada: int) -> int:
     while partida>=llegada:
         if (partida - 1) > llegada:
-            print("Viajó un año al pasado, estamos en el año:")
-            print(partida - 1)
+            print("Viajó un año al pasado, estamos en el año: " + str (partida - 1))
         elif (partida - 1) == llegada:
-            print("Viajó un año al pasado, estamos en el año:")
-            print (llegada)    
+            print("Viajó un año al pasado, estamos en el año: " + str (llegada))   
         partida -= 1
         
