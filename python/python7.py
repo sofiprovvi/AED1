@@ -5,7 +5,6 @@ import math
 
 #Ejercicio 1:
 
-
 #1.1)
 def pertenece (s: list[int], e: int)-> bool:
     lo_encontre: bool = False
@@ -33,27 +32,75 @@ print(pertenece_2([2,3,4,5,6,7,8,2,3],7))
 
 
 
-#1.3)
+#1.2)
+#con for:
+def divide_a_todos (s: list[int], e:int) -> bool:
+    lo_divide: bool = False
+    for i in s:
+        if math.ceil((i/e)) == (i/e):
+           lo_divide = True
+    return lo_divide 
 
+#con while:
+def divide_a_todos2 (s: list[int], e:int) -> bool:
+    lo_divide: bool = False
+    i: int = 0
+    while i<len(s) and not (lo_divide):
+        if math.ceil((s[i]/e)) == (s[i]/e):
+           lo_divide = True
+        i+=1   
+    return lo_divide 
+      
+
+#1.3)
 #con for:
 def suma_total (s: list[int]) -> int:
     suma: int = 0
-    for i in s: #significa "para cada elemento i de s"
+    for i in s: 
         suma += i  
     return suma  
 
-print ("suma_total")
-print(suma_total([2,3,4]))
+#con while:
+def suma_total2 (s: list[int]) -> int:
+    suma: int = 0
+    i: int = 0
+    while i<len(s):
+          suma += s[i]
+          i+=1
+    return suma  
+     
 
+
+#1.4)
+#con for:
+def ordenados (s: list[int]) -> bool:
+    esta_ordenado: bool = False
+    for i in range(0,len(s)-1,1):
+        if s[i]<= s[i+1]:
+           esta_ordenado = True
+    return esta_ordenado          
+
+
+
+#1.5)
+#con for:
+def longitud7 (s: list[str]) -> bool:
+    mayor_a_7: bool = False
+    for i in s:
+        if (len(i))>=7:
+           mayor_a_7 = True
+    return mayor_a_7        
 
 #con while:
-#def suma_total (s: list[int]) -> int:
-#    suma: int = 0
-#    i: int = 0
-#    while i<len(s):
-#          suma += s[i]
-#               i+=1
-#    return suma       
+def longitud72 (s: list[str]) -> bool:
+    mayor_a_7: bool = False
+    i: int = 0
+    while i<len(s) and not (mayor_a_7):
+        if len(s[i])>=7:
+           mayor_a_7 = True
+        i+=1   
+    return mayor_a_7
+
 
 
 #1.7)
