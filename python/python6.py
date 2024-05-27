@@ -190,7 +190,7 @@ def despegue (numero: int) -> int:
     while numero >=1:
         print(numero)
         numero -= 1    
-
+    print ("Despegue") 
 
 #6.5)
 def viaje_tiempo (partida: int, llegada: int) -> None:
@@ -209,7 +209,8 @@ def viaje_aristoteles (partida: int) -> None:
           elif (partida - 20) == 384:
             print("Viajó un año al pasado, estamos en el año: " + str (384))   
           partida -= 20
-               
+
+
 
 #EJERCICIO 7:
 
@@ -222,3 +223,158 @@ def numeros1a10_2 ():
 def numeros10a40_2 ():
     for numero in range(10,42,2):
         print (numero)
+
+#7.3)
+def imprime_eco_2 ():
+    palabra = "eco"
+    for n in range(1,10,1):
+        print(palabra)        
+
+#7.4)
+def despegue_2 (numero: int) -> int:
+    for numero in range (numero,0,-1):
+        print(numero)
+    print("Despegue")
+
+#7.5)
+def viaje_tiempo_2 (partida: int, llegada: int) -> None:
+    for partida in range(partida,llegada,-1):
+        print("Viajó un año al pasado, estamos en el año: " + str (partida)) 
+
+#7.6)
+def viaje_aristoteles_2 (partida: int) -> None:
+    for partida in range(partida,(-384),-20): 
+        print("Viajó un año al pasado, estamos en el año: " + str (partida))    
+
+
+
+#EJERCICIO 8:
+
+#8.1)
+def ocho_uno () -> int:
+    x = 5
+        #//Estado 1 x == 5
+    y = 7
+        #//Estado 2 y == 5
+    x = x + y
+        #//Estado 3 x == 12
+    return x
+
+
+#8.2)
+def ocho_dos () -> int:
+    x = 5
+        #//Estado 1 x == 5
+    y = 7
+        #//Estado 2 y == 7
+    z = x + y
+        #//Estado 3 z == 12
+    y = z*2
+        #//Estado 4 y == 24
+    return y      
+
+#8.3)
+def ocho_tres () -> str:
+    x = 5
+        #//Estado 1 x == 5
+    y = 7
+        #//Estado 2 y == 7
+    x = "hora"
+        #//Estado 3 x == "hora"
+    y = x * 2
+        #//Estado 4 y == "horahora"
+    return y
+
+#8.4)
+def ocho_cuatro () -> bool:
+    x = False
+        #//Estado 1 x == False
+    x = not (x)
+        #//Estado 2 x == True
+    res = x
+        #//Estado 3 res == True
+    return res    
+
+#8.5)
+def ocho_cinco () -> bool:
+    x = False
+        #//Estado 1 x == False
+    x = not (x)
+        #//Estado 2 x == True
+    return x
+
+#8.6)
+def ocho_seis () -> bool:
+    x = True
+        #//Estado 1 x == True
+    y = False
+        #//Estado 2 y == False
+    res = x and y
+        #//Estado 3 res == False
+    x = res and x
+        #//Estado 4 x == False
+    return x
+    
+
+
+# EJERCICIO 9:
+def rt (x: int, g: int) -> int:
+    g = g + 1
+    return x + g
+
+g: int = 0
+def ro(x: int) -> int:
+    global g
+    g = g + 1
+    return x + g
+
+#9.1) Si evaluo tres veces seguidas ro(1) == 2 
+#                                   ro(1) == 3 
+#                                   ro(1) == 4
+
+#9.2) Si evaluo tres veces seguidas rt(1,0) == 2
+
+#9.3)
+#RT:
+#PRIMERA LLAMADA:
+#//Estado 1 x == 1 
+#//Estado 2 g == 0
+#//Estado 3 g == g + 1 == 0 + 1 == 1
+#//Estadp 4 return == x + g == 1 + 1 == 2
+#SEGUNDA LLAMADA:
+#//Estado 1 x == 1 
+#//Estado 2 g == 0
+#//Estado 3 g == g + 1 == 0 + 1 == 1
+#//Estadp 4 return == x + g == 1 + 1 == 2
+#TERCERA LLAMADA:
+#//Estado 1 x == 1 
+#//Estado 2 g == 0
+#//Estado 3 g == g + 1 == 0 + 1 == 1
+#//Estadp 4 return == x + g == 1 + 1 == 2
+
+#R0:
+#PRIMERA LLAMADA:
+#//Estado 1 x == 1
+#//Estado 2 g == 0
+#//Estado 3 g == g + 1 == 0 + 1 == 1
+#//Estado 4 return == x + g == 1 + 1 == 2
+#SEGUNDA LLAMADA:
+#//Estado 1 x == 1
+#//Estado 2 g == 1
+#//Estado 3 g == g + 1 == 1 + 1 == 2
+#//Estado 4 return == x + g == 1 + 2 == 3
+#TERCERA LLAMADA:
+#//Estado 1 x == 1
+#//Estado 2 g == 2
+#//Estado 3 g == g + 1 == 2 + 1 == 3
+#//Estado 4 return == x + g == 1 + 3 == 4
+
+#9.4)
+#problema ro (in int: x):int {
+#requiere: {True}
+#requiere: {g es una variableGlobal g: int = 0}
+#asegura: {res = x + (g+1)}
+
+#problema rt (in int: x, inout int: g):int {
+#requiere: {True}
+#asegura: {res = x + (g+1)}
