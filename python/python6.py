@@ -179,7 +179,7 @@ def numeros10a40 ():
 #6.3)
 def imprime_eco ():
     palabra = "eco"
-    n: int = 1
+    n = 1
     while n<=10:
         print(palabra)
         n += 1 
@@ -211,3 +211,14 @@ def viaje_aristoteles (partida: int) -> None:
           partida -= 20
                
 
+#EJERCICIO 7:
+
+#7.1)
+def numeros1a10_2 ():
+    for numero in range(1,11,1):
+        print (numero)
+
+#7.2)
+def numeros10a40_2 ():
+    for numero in range(10,42,2):
+        print (numero)
