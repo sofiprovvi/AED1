@@ -2,7 +2,6 @@ import math
 
 #PRIMERA PARTE:
 
-
 #Ejercicio 1:
 
 #1.1)
@@ -208,6 +207,7 @@ def vocales2 (palabra: str) -> bool:
     return mas_de_tres_vocales
 
 
+#SEGUNDA PARTE:
 
 #Ejercicio 2:
 
