@@ -17,7 +17,7 @@ print("pertenece")
 print(pertenece([2,3,4,5],6))
 
 
-def pertenece_2 (s: list[int], e:int) -> bool:
+def pertenece_2 (s: list [int], e:int) -> bool:
     lo_encontre: bool = False
     i: int = 0
     while i < len(s) and not lo_encontre:
@@ -153,7 +153,7 @@ def fortaleza(contrasena: str)-> str:
     return fort    
 
 
-print("fortaleza") 
+print("FORTALEZA:") 
 print(fortaleza("opas"))
 print("fortaleza") 
 print(fortaleza("opassssssss"))
@@ -166,12 +166,15 @@ def saldo (movimientos: list[tuple [str, int]]) -> int:
     dinero: int = 0
     for movimiento in movimientos:
 
-    if movimiento[0] == "I":
-        dinero += movimiento[1]
-    else:
-        dinero -= movimiento[1]    
+        if movimiento[0] == "I":
+           dinero += movimiento[1]
+        else:
+           dinero -= movimiento[1]    
 
     return dinero    
+
+print ("saldo: " + str(saldo([("I",1000),("R",100)])))
+
 
 #1.9)
 #con for:
