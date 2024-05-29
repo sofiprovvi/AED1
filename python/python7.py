@@ -165,13 +165,11 @@ print (fortaleza("Opas2382347329"))
 def saldo (movimientos: list[tuple [str, int]]) -> int:
     dinero: int = 0
     for movimiento in movimientos:
-        letra: str = movimiento[0]
-        monto: int = movimiento[1]
 
-    if letra == "I":
-        dinero += monto
+    if movimiento[0] == "I":
+        dinero += movimiento[1]
     else:
-        dinero -= monto    
+        dinero -= movimiento[1]    
 
     return dinero    
 
