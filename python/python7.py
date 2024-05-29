@@ -31,7 +31,6 @@ print("pertenece_2")
 print(pertenece_2([2,3,4,5,6,7,8,2,3],7))
 
 
-
 #1.2)
 #con for:
 def divide_a_todos (s: list[int], e:int) -> bool:
@@ -40,6 +39,7 @@ def divide_a_todos (s: list[int], e:int) -> bool:
         if math.ceil((i/e)) == (i/e):
            lo_divide = True
     return lo_divide 
+
 
 #con while:
 def divide_a_todos2 (s: list[int], e:int) -> bool:
@@ -69,7 +69,6 @@ def suma_total2 (s: list[int]) -> int:
           i+=1
     return suma  
      
-
 
 #1.4)
 #con for:
@@ -111,6 +110,24 @@ def longitud72 (s: list[str]) -> bool:
     return mayor_a_7
 
 
+#1.6)
+#con for:
+def palindromo (s: str) -> bool:
+    es_palindromo: bool = True
+    for i in range (0,len(s)-1,1):
+        if s[i]!=s[(len(s)-i-1)]:
+           es_palindromo = False
+    return es_palindromo        
+
+#con while:
+def palindromo2 (s: str) -> bool:
+    es_palindromo: bool = True
+    i = 0
+    while i<len(s)-1 and es_palindromo:
+        if s[i]!=s[(len(s)-i-1)]:
+           es_palindromo = False
+        i+=1   
+    return es_palindromo
 
 
 #1.7)
@@ -142,4 +159,50 @@ print("fortaleza")
 print(fortaleza("opassssssss"))
 print("fortaleza") 
 print (fortaleza("Opas2382347329"))
+
+
+#1.8)
+def saldo (movimientos: list[tuple [str, int]]) -> int:
+    dinero: int = 0
+    for movimiento in movimientos:
+        letra: str = movimiento[0]
+        monto: int = movimiento[1]
+
+    if letra == "I":
+        dinero += monto
+    else:
+        dinero -= monto    
+
+    return dinero    
+
+#1.9)
+#con for:
+def vocales (palabra: str) -> bool:
+    cantidad_vocales: int = 0
+    mas_de_tres_vocales: bool = False
+    
+    for letra in palabra:
+        if (letra =='a') or (letra =='e') or (letra =='i') or (letra == 'o') or (letra == 'u'): 
+            cantidad_vocales += 1
+
+    if cantidad_vocales >= 3: 
+          mas_de_tres_vocales = True
+
+    return mas_de_tres_vocales
+
+#con while:
+def vocales2 (palabra: str) -> bool:
+    cantidad_vocales: int = 0
+    mas_de_tres_vocales: bool = False
+    i: int = 0
+
+    while i < len(palabra):
+        if (palabra[i] =='a') or (palabra[i]=='e') or (palabra[i] =='i') or (palabra[i] == 'o') or (palabra[i] == 'u'): 
+            cantidad_vocales += 1
+        i+=1
+
+    if cantidad_vocales >= 3: 
+          mas_de_tres_vocales = True
+
+    return mas_de_tres_vocales
 
