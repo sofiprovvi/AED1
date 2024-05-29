@@ -182,7 +182,7 @@ def vocales (palabra: str) -> bool:
     mas_de_tres_vocales: bool = False
     
     for letra in palabra:
-        if (letra =='a') or (letra =='e') or (letra =='i') or (letra == 'o') or (letra == 'u'): 
+        if letra in 'aeiouAEIOU': 
             cantidad_vocales += 1
 
     if cantidad_vocales >= 3: 
@@ -197,7 +197,7 @@ def vocales2 (palabra: str) -> bool:
     i: int = 0
 
     while i < len(palabra):
-        if (palabra[i] =='a') or (palabra[i]=='e') or (palabra[i] =='i') or (palabra[i] == 'o') or (palabra[i] == 'u'): 
+        if palabra[i] in 'aeiouAEIOU': 
             cantidad_vocales += 1
         i+=1
 
@@ -250,7 +250,7 @@ def elimina_vocales1 (palabra: list[chr]) -> list[chr]:
     for char in palabra:
         if char in 'aeiouAEIOU': 
             nueva_palabra += ['_']
-        elif (char !='a') and (char !='e') and (char !='i') and (char != 'o') and (char != 'u'): 
+        elif char not in 'aeiouAEIOU': 
             nueva_palabra += char
     return nueva_palabra           
 
@@ -265,9 +265,9 @@ print("--después: " + palabra1)
 def elimina_vocales2 (palabra: list[chr]) -> list[chr]:
     nueva_palabra: list[chr] = []
     for char in palabra:
-        if (char =='a') or (char =='e') or (char =='i') or (char == 'o') or (char == 'u'): 
+        if char in 'aeiouAEIOU': 
             nueva_palabra = nueva_palabra
-        elif (char !='a') and (char !='e') and (char !='i') and (char != 'o') and (char != 'u'): 
+        elif char not in 'aeiouAEIOU': 
             nueva_palabra += char
     return nueva_palabra        
 
