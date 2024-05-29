@@ -74,12 +74,21 @@ def suma_total2 (s: list[int]) -> int:
 #1.4)
 #con for:
 def ordenados (s: list[int]) -> bool:
-    esta_ordenado: bool = False
+    esta_ordenado = True
     for i in range(0,len(s)-1,1):
-        if s[i]<= s[i+1]:
-           esta_ordenado = True
-    return esta_ordenado          
+        if s[i]> s[i+1]: 
+            esta_ordenado = False
+    return esta_ordenado 
 
+#con while:
+def ordenados2 (s: list[int]) -> bool:
+    esta_ordenado: bool = True
+    i: int = 0
+    while i<(len(s)-1) and (esta_ordenado):
+          if s[i]> s[i+1]:
+             esta_ordenado = False
+          i+=1
+    return esta_ordenado  
 
 
 #1.5)
@@ -95,11 +104,12 @@ def longitud7 (s: list[str]) -> bool:
 def longitud72 (s: list[str]) -> bool:
     mayor_a_7: bool = False
     i: int = 0
-    while i<len(s) and not (mayor_a_7):
+    while i<(len(s)) and not (mayor_a_7):
         if len(s[i])>=7:
            mayor_a_7 = True
         i+=1   
     return mayor_a_7
+
 
 
 
