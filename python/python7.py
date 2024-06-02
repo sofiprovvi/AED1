@@ -411,7 +411,7 @@ def pertenece_a_cada_uno_version_1 (enteros: list[list[int]], e: int, res: list[
             res += [False]   
              
 version1r = [False,False]    
-version1 = [[6,5,4,3],[1,2,3,5,6,7],[9,8,7],[3]] 
+version1 = [[6,5,4,3],[1,2,3,5,6,7],[9,7,8],[3]] 
 print("pertenece_a_cada_uno_version_1:")
 print("ANTES: ")
 print("--version1: " + str(version1))
@@ -422,27 +422,24 @@ print("--version1: " + str(version1))
 print("--version1r: " + str(version1r))  
 
                   
-#5.2) (tdv no lo terminé)                       
+#5.2)                       
 def pertenece_a_cada_uno_version_2 (enteros: list[list[int]], e: int, res: list[bool]):
-    i = 0
-    while i < len(enteros)-1:
-        if pertenece(enteros[i],e):
-            res[i] = True
+    res.clear() #pongo res.clear() porque me limpia el res q yo tengo como parámetro. 
+                #res = [] le asignaría un nuevo valor a res, 
+                #sin modificar el valor de mi parámetro. 
+    for lista in enteros:
+        if pertenece (lista,e):
+            res += [True]
         else:
-            res[i] = False    
-        i += 1 
-                      
-             
-version2r = [False,False]    
-version2 = [[6,5,4,3],[1,2,3,5,6,7],[9,8,7],[3]] 
+            res += [False]                 
+              
 print("pertenece_a_cada_uno_version_2:")
 print("ANTES: ")
-print("--version2: " + str(version2))
-print("--version2r: " + str(version2r))
-pertenece_a_cada_uno_version_1(version1,7,version1r)
+print("--version2: " + str(version1))
+print("--version2r: " + str(version1r))
+pertenece_a_cada_uno_version_2(version1,7,version1r)
 print("DESPUÉS: ")
-print("--version2: " + str(version2))
-print("--version2r: " + str(version2r))    
+print("--version2: " + str(version1))
+print("--version2r: " + str(version1r))    
        
          
-          
