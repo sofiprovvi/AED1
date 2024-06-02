@@ -182,7 +182,7 @@ def vocales (palabra: str) -> bool:
     mas_de_tres_vocales: bool = False
     
     for letra in palabra:
-        if letra in 'aeiouAEIOU': 
+        if perteneceC("aeiouAEIOU", letra): 
             cantidad_vocales += 1
 
     if cantidad_vocales >= 3: 
@@ -197,7 +197,7 @@ def vocales2 (palabra: str) -> bool:
     i: int = 0
 
     while i < len(palabra):
-        if palabra[i] in 'aeiouAEIOU': 
+        if perteneceC("aeiouAEIOU", palabra[i]): 
             cantidad_vocales += 1
         i+=1
 
@@ -245,12 +245,19 @@ print("--después: " + str(enteros2))
 
 
 #2.4)
+def perteneceC (s: list[chr], char: chr)-> bool:
+    lo_encontre: bool = False
+    for x in s:
+        if x == char:
+           lo_encontre = True
+    return lo_encontre
+
 def elimina_vocales1 (palabra: list[chr]) -> list[chr]:
     nueva_palabra: list[chr] = []
     for char in palabra:
-        if char in 'aeiouAEIOU': 
+        if perteneceC("aeiouAEIOU", char): 
             nueva_palabra += ['_']
-        elif char not in 'aeiouAEIOU': 
+        elif not perteneceC("aeiouAEIOU", char): 
             nueva_palabra += char
     return nueva_palabra           
 
@@ -265,9 +272,9 @@ print("--después: " + palabra1)
 def elimina_vocales2 (palabra: list[chr]) -> list[chr]:
     nueva_palabra: list[chr] = []
     for char in palabra:
-        if char in 'aeiouAEIOU': 
+        if perteneceC("aeiouAEIOU", char): 
             nueva_palabra = nueva_palabra
-        elif char not in 'aeiouAEIOU': 
+        elif not perteneceC("aeiouAEIOU", char): 
             nueva_palabra += char
     return nueva_palabra        
 
@@ -298,7 +305,7 @@ def eliminar_repetidos (palabra: list[chr]) -> list[chr]:
     palabrita = []
     sin_repetir: list[chr] = []
     for i in range(0,len(palabra)-1,1):
-        if palabra[i] not in palabrita:
+        if not perteneceC(palabrita, palabra[i]):
            palabrita += palabra[i]
     return palabrita                           
 
@@ -414,7 +421,27 @@ print("DESPUÉS: ")
 print("--version1: " + str(version1))
 print("--version1r: " + str(version1r))  
                   
-    
+#5.2)                        
+def pertenece_a_cada_uno_version_2 (enteros: list[list[int]], e: int, res: list[bool]):
+    i = 0
+    while i < len(enteros)-1:
+        if pertenece(enteros[i],e):
+            res[i] = True
+        else:
+            res[i] = False    
+        i += 1 
+                      
+             
+version2r = [False,False]    
+version2 = [[6,5,4,3],[1,2,3,5,6,7],[9,8,7],[3]] 
+print("pertenece_a_cada_uno_version_2:")
+print("ANTES: ")
+print("--version2: " + str(version2))
+print("--version2r: " + str(version2r))
+pertenece_a_cada_uno_version_1(version1,7,version1r)
+print("DESPUÉS: ")
+print("--version2: " + str(version2))
+print("--version2r: " + str(version2r))    
        
          
           
