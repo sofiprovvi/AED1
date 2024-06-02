@@ -393,8 +393,27 @@ def siete_y_medio () -> list[int]:
                                     
                      
                  
-                        
-               
+#Ejercicio 5:
+
+#5.1)                        
+def pertenece_a_cada_uno_version_1 (enteros: list[list[int]], e: int, res: list[bool]):
+    for lista in enteros:
+        if pertenece (lista,e):
+            res += [True]
+        else:
+            res += [False]   
+             
+version1r = [False,False]    
+version1 = [[6,5,4,3],[1,2,3,5,6,7],[9,8,7],[3]] 
+print("pertenece_a_cada_uno_version_1:")
+print("ANTES: ")
+print("--version1: " + str(version1))
+print("--version1r: " + str(version1r))
+pertenece_a_cada_uno_version_1(version1,7,version1r)
+print("DESPUÉS: ")
+print("--version1: " + str(version1))
+print("--version1r: " + str(version1r))  
+                  
     
        
          
