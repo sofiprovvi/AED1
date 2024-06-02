@@ -369,27 +369,24 @@ def monedero () -> list[tuple[str, int]]:
 #4.3)
 import random
 
-def reparto() -> int:
-    while(True):
-        numero = random.randint(0, 12)
-        if not (pertenece([8, 9],numero)):
-            return numero
-
 def siete_y_medio () -> list[int]:
     suma: float = 0
-    cartas: list[int] = []   
-    if reparto == 11 or reparto() == 12 or reparto() == 10: 
-        puntos = 0
-    else: puntos = 0.5 
+    cartas: list[int] = []
+    aleatorio: int = random.randint(0,12)   
+    while aleatorio == 8  or aleatorio == 9: 
+        aleatorio = random.randint(0,12)
     while(True):
-           carta = reparto()
+           print("Su carta es: " + str(aleatorio))
+           cartas += [aleatorio]    
            respuesta = str(input("Si desea seguir sacando otra carta, conteste 'si'. De lo contrario, conteste 'no': "))
-           if respuesta == "si":
-                suma += puntos
-                cartas += [carta]
+           if respuesta == "si": 
+                if aleatorio == 10 or aleatorio == 11 or aleatorio == 12:
+                   suma += 0.5
+                else:
+                   suma += aleatorio 
            if respuesta == "no":
                 break    
-    if suma >= 7.5:
+    if suma > 7.5:
           print("Perdiste")
     else: print("Ganaste")
     return cartas    
