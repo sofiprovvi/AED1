@@ -307,3 +307,98 @@ print("eliminar_repetidos:")
 print("--antes: " + palabra4)
 print("--da_vuelta_str: " + str(eliminar_repetidos(palabra4)))
 print("--después: " + palabra4)
+
+
+#Ejercicio 3:
+def aprobado (notas: list[int]) -> int:
+    suma: int = 0
+    for n in notas:
+       suma += n  
+    promedio: int = math.ceil(suma/(len(notas)))
+    caso1: bool = False
+    caso2: bool = False
+    caso3: bool = False
+    for i in range (0,len(notas)-1,1):
+          if (notas[i]) >= 4 and (promedio>=7):
+            caso1 = True 
+          elif (notas[i]) >= 4 and (promedio>4 and promedio<=7):
+            caso2 = True   
+          elif not (caso1) and not (caso2) and (notas[i]<4 or promedio<4): 
+            caso3 = True
+    if caso1:
+       res = 1
+    elif caso2:
+       res = 2
+    elif caso3:
+       res = 3                                  
+    return res
+                      
+                      
+#Ejercicio 4:                     
+ 
+#4.1)
+def obtener_estudiantes () -> list[str]:
+    estudiantes = []
+    while(True):
+         estudiante = str(input("Ingresa los nombres de los estudiantes ('listo' para terminar): "))
+         if(estudiante=="listo"):
+            break
+         estudiantes += [estudiante]               
+    return estudiantes
+
+
+#4.2)
+def monedero () -> list[tuple[str, int]]:
+    historial: list[tuple[str, int]] = [] 
+    credito_final: int = 0
+    while(True):
+        operacion = str(input("Ingrese operación: "))
+        if operacion == "C" or operacion == "D":
+                monto = int(input("Ingrese monto: "))
+                historial += [(operacion,monto)]
+        elif operacion == "X":
+                break
+        if operacion == "C":
+            credito_final += monto
+        elif operacion == "D":
+            credito_final -= monto
+    print(credito_final)                    
+    return historial  
+
+
+#4.3)
+import random
+
+def reparto() -> int:
+    while(True):
+        numero = random.randint(0, 12)
+        if not (pertenece([8, 9],numero)):
+            return numero
+
+def siete_y_medio () -> list[int]:
+    suma: float = 0
+    cartas: list[int] = []   
+    if reparto == 11 or reparto() == 12 or reparto() == 10: 
+        puntos = 0
+    else: puntos = 0.5 
+    while(True):
+           carta = reparto()
+           respuesta = str(input("Si desea seguir sacando otra carta, conteste 'si'. De lo contrario, conteste 'no': "))
+           if respuesta == "si":
+                suma += puntos
+                cartas += [carta]
+           if respuesta == "no":
+                break    
+    if suma >= 7.5:
+          print("Perdiste")
+    else: print("Ganaste")
+    return cartas    
+                                    
+                     
+                 
+                        
+               
+    
+       
+         
+          
