@@ -176,6 +176,13 @@ print ("saldo: " + str(saldo([("I",1000),("R",100)])))
 
 
 #1.9)
+def perteneceC (s: list[chr], char: chr)-> bool:
+    lo_encontre: bool = False
+    for x in s:
+        if x == char:
+           lo_encontre = True
+    return lo_encontre
+
 #con for:
 def vocales (palabra: str) -> bool:
     cantidad_vocales: int = 0
@@ -245,13 +252,6 @@ print("--después: " + str(enteros2))
 
 
 #2.4)
-def perteneceC (s: list[chr], char: chr)-> bool:
-    lo_encontre: bool = False
-    for x in s:
-        if x == char:
-           lo_encontre = True
-    return lo_encontre
-
 def elimina_vocales1 (palabra: list[chr]) -> list[chr]:
     nueva_palabra: list[chr] = []
     for char in palabra:
@@ -420,8 +420,9 @@ pertenece_a_cada_uno_version_1(version1,7,version1r)
 print("DESPUÉS: ")
 print("--version1: " + str(version1))
 print("--version1r: " + str(version1r))  
+
                   
-#5.2)                        
+#5.2) (tdv no lo terminé)                       
 def pertenece_a_cada_uno_version_2 (enteros: list[list[int]], e: int, res: list[bool]):
     i = 0
     while i < len(enteros)-1:
