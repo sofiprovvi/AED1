@@ -440,6 +440,47 @@ print("--version2r: " + str(version1r))
 pertenece_a_cada_uno_version_2(version1,7,version1r)
 print("DESPUÉS: ")
 print("--version2: " + str(version1))
-print("--version2r: " + str(version1r))    
-       
-         
+print("--version2r: " + str(version1r)) 
+
+
+#5.3)
+def es_matriz (s: list[list[int]]) -> bool:
+    es_matriz_wtf: bool = False
+    i: int = 0
+    while i<len(s)-1 and not (es_matriz_wtf):
+        if len(s[i])==len(s[0]):
+           es_matriz_wtf = True
+        i+=1   
+
+    return es_matriz_wtf
+   
+
+#5.4)         
+def filas_ordenadas (m: list[list[int]],res: list[bool]):
+    res.clear()
+    i: int = 0
+    while i<len(m):
+        if ordenados (m[i]):
+            res += [True]
+        else:
+            res += [False] 
+        i+=1       
+
+matriz = [[6,5,4,3],[1,2,3,5],[9,7,8,3]] 
+print("filas_ordenadas:")
+print("ANTES: ")
+print("--matriz: " + str(matriz))
+print("--version1r: " + str(version1r))
+filas_ordenadas(matriz,version1r)
+print("DESPUÉS: ")
+print("--matriz: " + str(matriz))
+print("--version1r: " + str(version1r))             
+
+
+#5.5)
+import numpy as np
+
+def multiplicar_matriz (d: int,p: int) -> list[list[int]]:
+    m = np.random.randint(0,2, (d,d))
+    res = m**p
+    return res
