@@ -13,7 +13,7 @@ def contar_lineas (nombre_archivo: str) -> int:
    return res     
 
 
-#1.2) #no terminé tdv
+#1.2) 
 def pertenece (linea: list[chr], palabra: str) -> bool:
     lo_encontre: bool = False
     i: int = 0
@@ -21,18 +21,22 @@ def pertenece (linea: list[chr], palabra: str) -> bool:
         while i<len(palabra) and not (lo_encontre):
              if palabra[i] == texto:
                 lo_encontre = True
-    return lo_encontre       
-     
+    return lo_encontre                                   
 
-def existe_palabra (palabra : str, nombre_archivo : str) -> bool:
-    f = open(nombre_archivo) 
-    existe: bool = False 
-    for linea in f.readlines():
-        for p in linea:
-            if pertenece(p, palabra):
-                existe = True      
-    f.close()       
-    return existe
+def existe_palabra(palabra: str, nombre_archivo: str)-> bool:
+    archivo = open(nombre_archivo)
+    leo_archivo = archivo.readlines()
+    print(leo_archivo)
+    for renglon in leo_archivo:
+       if pertenece (renglon,palabra):
+           return True
+       else:
+           return False
+
+
+#1.3)
+#def cantidad_apariciones (nombre_archivo : str, palabra : str) -> int:
+#    f = open(nombre_archivo)
+#    if existe_palabra (palabra, nombre_archivo):
         
-
 
