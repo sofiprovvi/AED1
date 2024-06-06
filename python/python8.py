@@ -54,7 +54,7 @@ def esUnEspacio (c: str) -> bool:
 
 #1.3)
 def cantidad_apariciones (palabra : str, nombre_archivo: str) -> int:
-    archivo = open(nombre_archivo)
+    archivo = open(nombre_archivo, "r")
     leo_archivo = archivo.readlines()
     i: int = 0
     for renglon in leo_archivo:
@@ -72,4 +72,17 @@ def pertenece2 (linea: list[str], palabra: str) -> int:
     return aparicion          
 
 
-
+#EJERCICIO 2:
+def clonar_sin_comentarios (nombre_archivo: str):
+    archivo = open(nombre_archivo, "r+")
+    nuevo_archivo = open("nuevo_archivo.txt","w")
+    leo_archivo = archivo.readlines()
+    nuevo_renglon: str = ""
+    for renglon in leo_archivo:
+         if renglon[0] == "#": 
+            nuevo_renglon = ""
+         else:
+            nuevo_renglon = renglon  
+         nuevo_archivo.writelines(nuevo_renglon)                   
+    archivo.close()
+                           
