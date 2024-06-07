@@ -203,31 +203,21 @@ print("buscar_el_maximo_cola: " + str(buscar_el_maximo_cola(generar_cola(4,1,3))
 #Ejercicio 16:
 
 #16.1)
-def quitar (s: list[int], e: int) -> list[int]:
-    lista: list[int] = []
-    for x in s:
-       if x != e:
-          lista.append(x)
-       else: 
-          lista += []    
-    return lista
-      
-def armar_secuencia_de_bingo() -> Cola[int]:
-    bolillero: list[int] = []
-    i: int = 0
-    while i<100:
-       bolillero.append(i)
-       i+=1
-    c: Cola[int] = Cola
+def armar_secuencia_de_bingo () -> Cola[int]:
+    listaDeBolillas: list [int] = []
+    for bolilla in range (0,100,1):
+        listaDeBolillas.append(bolilla)
 
-    while len(bolillero)<0:
-          e: int = random.choice(bolillero)
-          bolillero = quitar(bolillero,e)
-          c.put(e)
-    return c   
+    random.shuffle(listaDeBolillas) # mezclamos la listaDeBolillas.
+
+    bolillero: Cola [int] = Cola()
+    for b in listaDeBolillas: # b son las bolillas que voy a meter en la cola bolillero
+        bolillero.put(b)
+
+    return bolillero 
 
 #16.2)
-def jugar_carton_de_bingo (carton : list[int], bolillero : Cola[int]) -> int:
+def jugar_carton_de_bingo (carton: list[int], bolillero: Cola[int]) -> int:
    cantSinMarcar: int = len (carton) #cantidad de fichas q tdv no coincidieron con lo q saqué del bolillero
    temp: list [int] = [] #lista temporal en donde voy a poner los elementos q saqué del bolillero, para volver a incorporarlos al final!!
 
@@ -248,5 +238,44 @@ def jugar_carton_de_bingo (carton : list[int], bolillero : Cola[int]) -> int:
    return jugadas
 
 bolillero = armar_secuencia_de_bingo()
-print(str(jugar_carton_de_bingo([20,45,21,56,87], bolillero)))
-         
+print(str(jugar_carton_de_bingo([20,45,21,56,87], bolillero)))  
+
+
+
+#EJERCICIO 17:
+def generar_cola_tuplas (s: list[tuple[int,str,str]]) -> Cola[int,str,str]:
+    c: Cola[int,str,str] = Cola()
+    for x in s:
+        c.put(x)
+
+    return c   
+
+def pacientes_urgentes(c : Cola[(int, str, str)]) -> int:
+   urgencias: int = 0
+   almacenamiento: list[tuple[int,str,str]] = []
+   while not (c.empty()):
+     g = c.get()
+     almacenamiento.append(g)
+     if g[0] == 1 or g[0] == 2 or g[0] == 3:
+        urgencias += 1
+
+   for a in almacenamiento:
+      c.put(a)
+
+   return urgencias     
+   
+print("pacientes_urgentes: " + str(pacientes_urgentes(generar_cola_tuplas([(1,"sofia","oido"),(5,"lopez","gimnasio"),(2,"malena","dientes"),(4,"joaco","pie")]))))    
+
+
+#EJERCICIO 18:
+#La gerencia de un banco nos pide modelar la atencion de los clientes usando una cola donde se van registrando
+#los pedidos de atencion. Cada vez que ingresa una persona a la entidad, debe completar sus datos en una pantalla que esta a la
+#entrada: Nombre y Apellido, DNI, tipo de cuenta (si es preferencial o no) y si tiene prioridad por ser adulto +65, embarazada o
+#con movilidad reducida (prioridad si o no).
+#La atencion a los clientes se da por el siguiente orden: primero las personas que tienen prioridad, luego las que tienen cuenta
+#bancaria preferencial y por ultimo el resto. Dentro de cada subgrupo de clientes, se respeta el orden de llegada.
+
+#2. Implementar atencion a clientes(in c : Cola[(str, int, bool, bool)]) → Cola[(str, int, bool, bool)] que dada la cola de
+#ingreso de clientes al banco devuelve la cola en la que van a ser atendidos.
+
+
