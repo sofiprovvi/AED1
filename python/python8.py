@@ -458,10 +458,10 @@ print("--antes: ' '")
 visitar_sitio(historiales,"julipavlov","amazonprime.com")  
 print("--después: " + str(imprimir_pila_historial((historiales['julipavlov']))))
 
-
+    
 #22.3)
 def navegar_atras (historiales: dict[str, Pila[str]], usuario:str):
-    if usuario in historiales.keys():
+   if usuario in historiales.keys():
        historial = historiales[usuario]
        actual = historial.get()
        anterior = historial.get()
@@ -476,4 +476,65 @@ print("--después: " + str(imprimir_pila_historial((historiales['gastonboque']))
 
 
 
-#Ejercicio 23:
+#Ejercicio 23: 
+infoCamisa = { 'precio': 100.0 ,'cantidad' : 30}
+infoVestido = { 'precio': 200.0 , 'cantidad' : 53}
+infoPollera = { 'precio': 154.0, 'cantidad': 18}
+infoCampera = { 'precio': 1234.0, 'cantidad' : 6}
+
+inventario = {'camisa' : infoCamisa, 
+              'vestido' : infoVestido,
+              'pollera' : infoPollera,
+              'campera' : infoCampera}
+
+#23.1)
+def agregar_producto (inventario: dict[str,dict[float,int]], nombre: str, precio: float, cantidad: int):
+    infoNombre: dict[float,int] = {}
+    if nombre not in inventario.keys():
+       infoNombre['precio'] = precio
+       infoNombre['cantidad'] = cantidad
+       inventario[nombre] = infoNombre
+
+print("agregar_producto")
+agregar_producto(inventario,"sombrero",89.7,40)
+print(inventario)       
+
+
+#23.2)
+def actualizar_stock (inventario: dict[str,dict[float,int]], nombre: str, cantidad: int):
+    if nombre in inventario.keys():
+       infoNombre: dict[float, int] = inventario[nombre] 
+       infoNombre['cantidad'] = infoNombre['cantidad'] + cantidad
+       inventario[nombre] = infoNombre 
+
+print("actualizar_stock")
+actualizar_stock(inventario,"camisa",10)
+print(inventario)
+
+
+#23.3)
+def actualizar_precio (inventario: dict[str,dict[float,int]], nombre: str, precio: float):
+     if nombre in inventario.keys():
+       infoNombre: dict[float, int] = inventario[nombre] 
+       infoNombre['precio'] = infoNombre['precio'] + precio
+       inventario[nombre] = infoNombre 
+
+print("actualizar_precio")
+actualizar_precio(inventario,"camisa",10)
+print(inventario)
+
+
+#23.4)
+def calcular_valor_inventario (inventario: dict[str,dict[float,int]]) -> float:
+     dinero: float = 0
+     for nombre, info in inventario.items():
+         if nombre in inventario.keys():
+            info = inventario[nombre]
+            dinero += (info['cantidad'] * info['precio'])
+     return dinero       
+
+print("calcular_valor_inventario")
+print(calcular_valor_inventario(inventario))
+
+          
+
