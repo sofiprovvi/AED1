@@ -315,7 +315,7 @@ def separar_palabras(linea:str, espacio:str) -> list[str]:
     res:list[str] = []
     palabra:str = ""
     for letra in linea:
-        if letra != espacio:
+        if letra != espacio and letra != "\n":
             palabra = palabra + letra
         else:
             if len(palabra) > 0:
@@ -370,7 +370,110 @@ def calcular_promedio_por_estudiante (nombre_archivo_notas : str) -> dict[str, f
     return res    
 
               
-       
-    
+
+#Ejercicio 21:         
+def palabra_mas_frecuente (nombre_archivo: str) -> dict:
+    archivo = open(nombre_archivo)
+    leo = archivo.read()
+    lista = separar_palabras(leo, " ")
+    res: dict[str,int] = {}
+    for i in range(0,len(lista),1):
+       clave = lista[i]
+       if not clave in res.keys():
+          res[clave] = cantidad_apariciones(lista,clave)
+    archivo.close()
+
+    mas_frecuente = ""
+    aparece: int = 0 
+    for palabra, aparicion in res.items():
+        if aparicion > aparece:
+           aparece = aparicion
+           mas_frecuente = palabra 
+
+    return mas_frecuente
+          
+
+def cantidad_apariciones (leo: list[str], palabra: str) -> int:
+    i: int = 0
+    for elemento in leo:
+        if elemento in palabra:
+           i+=1
+    return i
 
 
+
+#Ejercicio 22:
+
+#22.1)
+def imprimir_pila_historial (p: Pila[str]) -> list[str]:
+    provisoria: list[str] = []
+    final: list[str] = []
+
+    while not (p.empty()):
+          g = p.get()
+          provisoria.append(g)
+
+    for i in range (len(provisoria)-1,-1,-1):
+        final.append(provisoria[i])
+
+    for f in final:
+       p.put(f) 
+
+    return final            
+
+
+def generar_pila_historial (s: list[str]) -> Pila[str]:
+    p: Pila[str] = Pila()
+    for x in s:
+       p.put(x)
+    return p           
+
+pila1 = ["wattpad.com","substack.com","spotify.com"]
+pila2 = ["netflix.com","percyjackson.com","cuevana.com"]
+pila3 = ["freud.com","uniendocaminos.com"]
+pila4 = ["itba.com","ciencia.com","analisis.com"]
+pila5 = ["wos.com","pottermore.com"]
+
+historiales = {'sofiprovvi': generar_pila_historial(pila1),
+              'gastonboque': generar_pila_historial(pila2),
+              'augustocasais':generar_pila_historial(pila3),
+              'pilibasteguieta':generar_pila_historial(pila4),
+              'inasrur7': generar_pila_historial(pila5)}
+
+
+#22.2)
+def visitar_sitio (historiales: dict[str, Pila[str]], usuario:str, sitio:str):
+    if usuario in historiales.keys():
+       pila: Pila[str] = historiales[usuario]
+       pila.put(sitio)
+       historiales[usuario] = pila
+              
+    else:
+       nueva_pila: Pila [str] = Pila()
+       nueva_pila.put(sitio)
+       historiales[usuario] = nueva_pila
+     
+print("visitar_sitio")
+print("--antes: ' '")
+visitar_sitio(historiales,"julipavlov","amazonprime.com")  
+print("--después: " + str(imprimir_pila_historial((historiales['julipavlov']))))
+
+
+#22.3)
+def navegar_atras (historiales: dict[str, Pila[str]], usuario:str):
+    if usuario in historiales.keys():
+       historial = historiales[usuario]
+       actual = historial.get()
+       anterior = historial.get()
+       historial.put(actual)
+       historial.put(anterior)
+       historiales[usuario] = historial
+
+print("navegar_atras")
+print("--antes: " + str(imprimir_pila_historial((historiales['gastonboque']))))
+navegar_atras(historiales,"gastonboque")  
+print("--después: " + str(imprimir_pila_historial((historiales['gastonboque']))))
+
+
+
+#Ejercicio 23:
