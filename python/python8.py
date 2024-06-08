@@ -242,7 +242,7 @@ print(str(jugar_carton_de_bingo([20,45,21,56,87], bolillero)))
 
 
 
-#EJERCICIO 17:
+#Ejercicio 17:
 def generar_cola_tuplas (s: list[tuple[int,str,str]]) -> Cola[int,str,str]:
     c: Cola[int,str,str] = Cola()
     for x in s:
@@ -267,15 +267,110 @@ def pacientes_urgentes(c : Cola[(int, str, str)]) -> int:
 print("pacientes_urgentes: " + str(pacientes_urgentes(generar_cola_tuplas([(1,"sofia","oido"),(5,"lopez","gimnasio"),(2,"malena","dientes"),(4,"joaco","pie")]))))    
 
 
-#EJERCICIO 18:
-#La gerencia de un banco nos pide modelar la atencion de los clientes usando una cola donde se van registrando
-#los pedidos de atencion. Cada vez que ingresa una persona a la entidad, debe completar sus datos en una pantalla que esta a la
-#entrada: Nombre y Apellido, DNI, tipo de cuenta (si es preferencial o no) y si tiene prioridad por ser adulto +65, embarazada o
-#con movilidad reducida (prioridad si o no).
-#La atencion a los clientes se da por el siguiente orden: primero las personas que tienen prioridad, luego las que tienen cuenta
-#bancaria preferencial y por ultimo el resto. Dentro de cada subgrupo de clientes, se respeta el orden de llegada.
+#Ejercicio 18:
+def generar_cola_clientes (clientes: list[str,int,bool,bool]) -> Cola[(str, int, bool, bool)]:
+    c: Cola[(str, int, bool, bool)] = Cola()
+    for cliente in clientes:
+        c.put(cliente)
+    return c    
 
-#2. Implementar atencion a clientes(in c : Cola[(str, int, bool, bool)]) → Cola[(str, int, bool, bool)] que dada la cola de
-#ingreso de clientes al banco devuelve la cola en la que van a ser atendidos.
+atendidos = generar_cola_clientes([("sofi",1,True,False),("juli",4,False,False),("valen",8,True,True),("vicky",45,False,True)])
+
+def implementar_atencion_clientes (c: Cola[str,int,bool,bool]) -> Cola[(str, int, bool, bool)]:
+    prioridad: list[tuple[str,int,bool,bool]] = []
+    preferencial: list[tuple[str,int,bool,bool]] = []
+    resto: list[tuple[str,int,bool,bool]] = []
+    total: list[tuple[str,int,bool,bool]] = []
+    atendidos: Cola[tuple[str,int,bool,bool]]= Cola() 
+    while not (c.empty()):
+       g = c.get()
+       if g[3]==True:
+          prioridad.append(g)
+       elif g[2]==True:
+          preferencial.append(g)
+       else:
+          resto.append(g)
+    total = prioridad + preferencial + resto
+    for cliente in total:
+       atendidos.put(cliente)
+    return atendidos   
+
+def imprimir_cola_atendidos (atendidos: Cola[tuple[str,int,bool,bool]]) -> list[tuple[str,int,bool,bool]]:
+   cola: list[tuple[str,int,bool,bool]] = []
+   while not (atendidos.empty()):
+     g = atendidos.get()
+     cola.append(g)
+   for e in cola:
+       atendidos.put(e)  
+   return cola
+
+print("atencion_clientes: " + str(imprimir_cola_atendidos(implementar_atencion_clientes(atendidos))))
+
+
+
+#DICCIONARIOS:
+
+#Ejercicio 19: APRENDERME ESTA FUNCION DE MEMORIAAAAA!!!!!
+def separar_palabras(linea:str, espacio:str) -> list[str]:
+    res:list[str] = []
+    palabra:str = ""
+    for letra in linea:
+        if letra != espacio:
+            palabra = palabra + letra
+        else:
+            if len(palabra) > 0:
+                res.append(palabra)
+                palabra = ""
+    res.append(palabra)
+    return res
+
+def agrupar_por_longitud(nombre_archivo: str) -> dict[int,int]:
+    archivo = open(nombre_archivo,"r")
+    linea = archivo.read()
+    res:dict[int,int] = dict()
+    # a partir del texto entero, creo una lista de palabras:
+    palabras:list[str] = separar_palabras(linea, " ")
+    for palabra in palabras:
+        clave: int = len(palabra)
+        if clave in res.keys():
+            res[clave] += 1
+        else:
+            res[clave] = 1   
+       
+    return res   
+
+
+
+#Ejercicio 20:
+def promedio_estudiante (nombre_archivo: str, lu: str) -> float:
+    suma_notas: float = 0
+    cantidad_notas: float = 0
+    archivo = open(nombre_archivo, "r")
+    leo_archivo = archivo.readline()
+    while leo_archivo != '': #pongo ese while para q me haga readline con cada linea
+     renglon = separar_palabras(leo_archivo," ")
+     if renglon[0]==(lu):
+       suma_notas += float(renglon[3])
+       cantidad_notas += 1
+     leo_archivo = archivo.readline()            
+    archivo.close()
+    promedio: float = suma_notas/cantidad_notas
+    return promedio            
+
+def calcular_promedio_por_estudiante (nombre_archivo_notas : str) -> dict[str, float]:
+    archivo = open(nombre_archivo_notas, "r")
+    leo = archivo.readlines()
+    res: dict[str, float] = {}
+    for linea in leo:
+        renglon = separar_palabras(linea, " ")
+        clave: str = renglon[0]
+        if not clave in res.keys():
+           res[clave] = promedio_estudiante(nombre_archivo_notas,clave)
+    archivo.close()       
+    return res    
+
+              
+       
+    
 
 

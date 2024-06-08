@@ -3,6 +3,18 @@ import math
 import array
 
 #ARCHIVOS:
+def separar_palabras(linea:str, espacio:str) -> list[str]:
+    res:list[str] = []
+    palabra:str = ""
+    for letra in linea:
+        if letra != espacio:
+            palabra = palabra + letra
+        else:
+            if len(palabra) > 0:
+                res.append(palabra)
+                palabra = ""
+    res.append(palabra)
+    return res
 
 #EJERCICIO 1:
 
@@ -31,29 +43,9 @@ def existe_palabra (palabra: str, nombre_archivo: str) -> bool:
     archivo.close()
     existe: bool = False
     for renglon in leo_archivo:
-        if pertenece ((separarEnPalabras(renglon)),palabra):
+        if pertenece ((separar_palabras(renglon, " ")),palabra):
            existe = True
     return existe         
-
-def separarEnPalabras (renglon: str) -> list [str]:
-    temporalmente: str = "" # en esta variable voy ir armando y guardando temporalmente cada una de las palabras
-    res: list [str] = []
-    i: int = 0
-    while i < len(renglon):
-        if esUnEspacio (renglon[i]):
-            res.append (temporalmente) 
-            temporalmente = "" # vacio y dejo temp lista para comenzar a guardar la proxima palabra
-            while i < len(renglon) and esUnEspacio(renglon[i]): # para saltearme varios espacios continuos
-                i+=1
-        else:
-            temporalmente += renglon[i]
-            i+=1
-    return res
-
-def esUnEspacio (c: str) -> bool:
-    return c == " " or c == "\n" or c == "\t"
-
-
 
 #1.3)
 def cantidad_apariciones (palabra : str, nombre_archivo: str) -> int:
@@ -61,7 +53,7 @@ def cantidad_apariciones (palabra : str, nombre_archivo: str) -> int:
     leo_archivo = archivo.readlines()
     i: int = 0
     for renglon in leo_archivo:
-         i += (pertenece2 ((separarEnPalabras (renglon)), palabra))
+         i += (pertenece2 ((separar_palabras (renglon, " ")), palabra))
     archivo.close()   
     return i        
 
@@ -168,7 +160,7 @@ def promedio_estudiante (nombre_archivo:str, lu : str) -> float:
     archivo = open(nombre_archivo, "r")
     leo_archivo = archivo.readline()
     while leo_archivo != '': #pongo ese while para q me haga readline con cada linea
-     renglon = separarEnPalabras(leo_archivo)
+     renglon = separar_palabras(leo_archivo, " ")
      if renglon[0]==(lu):
        suma_notas += float(renglon[3])
        cantidad_notas += 1
@@ -183,7 +175,7 @@ def calcular_promedio_por_estudiante (nombre_archivo_notas: str, nombre_archivo_
     notas_linea = notas.readline()
     lista: str = []
     while notas_linea != '':
-        lista_notas_linea = separarEnPalabras(notas_linea)
+        lista_notas_linea = separar_palabras(notas_linea," ")
         lu = lista_notas_linea[0]
         if not (lu in lista):
             lista += lu
