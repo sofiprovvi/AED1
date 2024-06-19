@@ -311,7 +311,7 @@ print("atencion_clientes: " + str(imprimir_cola_atendidos(implementar_atencion_c
 #DICCIONARIOS:
 
 #Ejercicio 19: APRENDERME ESTA FUNCION DE MEMORIAAAAA!!!!!
-def separar_palabras(linea:str, espacio:str) -> list[str]:
+def separar_palabras(linea:str, espacio: str) -> list[str]:
     res:list[str] = []
     palabra:str = ""
     for letra in linea:
