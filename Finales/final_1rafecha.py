@@ -9,7 +9,6 @@ def esSudokuValido (m: list[list[int]]) -> bool:
                     res1 = True    
             f+=1
 
-
     a: int = 0
     c: int = 0
     columna: list = []

@@ -3,40 +3,38 @@ esSudokuValido (x:xs) | filasNoValidas (x:xs) =False
                       | columnasNoValidas (x:xs) =False
                       | otherwise =True
 
-hayRepetidosF :: [Int] -> Bool
-hayRepetidosF (x:y:[]) | (x==y && (x/=0) && (y/=0)) =True
+hayRepetidos :: [Int] -> Bool
+hayRepetidos (x:y:[]) | (x==y && (x/=0) && (y/=0)) =True
                        | otherwise =False
-hayRepetidosF (x:y:xs) | (x==y && (x/=0) && (y/=0)) =True
-                       | otherwise = hayRepetidosF (x:xs) || hayRepetidosF (y:xs)
+hayRepetidos (x:y:xs) | (x==y && (x/=0) && (y/=0)) =True
+                       | otherwise = hayRepetidos (x:xs) || hayRepetidos (y:xs)
 
 filasNoValidas :: [[Int]] -> Bool
-filasNoValidas [x] | hayRepetidosF x =True
+filasNoValidas [x] | hayRepetidos x =True
                    | otherwise =False
-filasNoValidas (x:xs) | hayRepetidosF x =True
+filasNoValidas (x:xs) | hayRepetidos x =True
                       | otherwise = filasNoValidas (xs)                   
 
-principio :: [Int] -> Int
-principio [] = 0
-principio (x:xs) = x
+quitarPrimerElemento :: [Int] -> [Int] 
+quitarPrimerElemento [] = []
+quitarPrimerElemento (x:xs) = xs
 
-quitarPrincipio :: [Int] -> [Int] 
-quitarPrincipio [] = [0]
-quitarPrincipio (x:xs) = xs
+quitarPrimeraColumna :: [[Int]] -> [[Int]]
+quitarPrimeraColumna [x] = [quitarPrimerElemento x]
+quitarPrimeraColumna (x:xs) = [quitarPrimerElemento x] ++ quitarPrimeraColumna (xs)
 
-quitarPrincipioLista :: [[Int]] -> [[Int]]
-quitarPrincipioLista [x] = [quitarPrincipio x]
-quitarPrincipioLista (x:xs) = [quitarPrincipio x] ++ quitarPrincipioLista (xs)
+primeraColumna :: [[Int]] -> [Int]
+primeraColumna [x] = [head x]
+primeraColumna (x:xs) = [head x] ++ primeraColumna (xs)
 
-hayRepetidosC :: [[Int]] -> Bool
-hayRepetidosC (x:y:[]) | ((principio x == principio y)  && ((principio x)/=0) && ((principio y)/=0)) =True
-                       | otherwise =False
-hayRepetidosC (x:y:xs) | ((principio x == principio y)  && ((principio x)/=0) && ((principio y)/=0)) =True
-                       | otherwise = hayRepetidosC (x:xs) || hayRepetidosC (y:xs)
+columnas :: [[Int]] -> [[Int]]
+columnas [] = []
+columnas ([]:_) = []
+columnas (x:xs) = [primeraColumna (x:xs)] ++ columnas (quitarPrimeraColumna (x:xs))
 
 columnasNoValidas :: [[Int]] -> Bool
-columnasNoValidas (xs) = False
-columnasNoValidas (x:y:xs) | hayRepetidosC (x:y:xs) =True
-                           | otherwise =columnasNoValidas (quitarPrincipioLista (x:y:xs)) 
+columnasNoValidas (x:xs) | filasNoValidas (columnas (x:xs)) =True
+                         | otherwise =False
 
 
 m :: [[Int]] -> [[Int]]
