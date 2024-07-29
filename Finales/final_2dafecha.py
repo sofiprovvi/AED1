@@ -6,8 +6,7 @@ def nuevaSecuencia (s: list[int], t: list[int]) -> list[int]:
     for i in range (0,len(s),1):
         if s[i] <= len(t):
             for n in range (0,s[i]+1,1):
-                subsecuencia.append(t[n])
-            print(subsecuencia)    
+                subsecuencia.append(t[n])    
             while e < len(subsecuencia):
                  if subsecuencia[e] > maximo:
                      maximo = subsecuencia[e]

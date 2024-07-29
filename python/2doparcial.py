@@ -160,3 +160,13 @@ def quien_gano_el_tateti_facilito (tablero: list[list[str]]) -> int:
                   res = 3                        
 
         return res
+
+
+t = [['X',' ',' ',' ',' '],
+     ['X',' ','O',' ',' '],
+     [' ',' ','O',' ',' '],
+     [' ',' ','O',' ',' '],
+     [' ',' ',' ',' ',' ']
+     ]
+     
+  

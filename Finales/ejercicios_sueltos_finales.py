@@ -103,3 +103,56 @@ falso_tablero = [[0,1,0],
 
 print(esDamero(tablero))
 print(esDamero(falso_tablero))
+
+
+
+
+
+#EJERCICIO 3:
+def quien_gano_el_tateti_facilito (tablero: list[list[chr]]) -> bool:
+    c:int=0
+    columna: list[chr]=[]
+    hay_tres_x:list[bool]=[]
+    hay_tres_o:list[bool]=[]
+    i:int=0
+
+    while c<len(tablero):
+          for fila in tablero:
+              columna.append(fila[c])
+          while (i+2)<len(tablero):
+              if columna[i]=='X':
+                 if (columna[i+1]=='X') and (columna[i+2]=='X'):
+                     res_x =True
+                     hay_tres_x.append(res_x)
+              elif columna[i]=='O':
+                 if (columna[i+1]=='O') and (columna[i+2]=='O'):
+                     res_o =True
+                     hay_tres_o.append(res_o)  
+              i+=1
+              res_x = False
+              res_o = False
+          columna = []
+          c+=1
+          i=0
+
+    if (True in hay_tres_x) and (True in hay_tres_o):
+          res = 3
+    elif (True in hay_tres_x) and not (True in hay_tres_o):
+          res = 1
+    elif not (True in hay_tres_x) and (True in hay_tres_o):
+          res = 2        
+    elif not (True in hay_tres_x) and not (True in hay_tres_o):
+          res = 0
+
+    return res         
+
+t = [['X',' ',' ',' ',' '],
+     ['X',' ','O',' ',' '],
+     [' ',' ','O',' ',' '],
+     [' ',' ','O',' ',' '],
+     [' ',' ',' ',' ',' ']
+     ]
+
+print(quien_gano_el_tateti_facilito(t))
+                       
+                
